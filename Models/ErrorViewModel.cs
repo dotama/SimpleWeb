@@ -1,6 +1,4 @@
-using System;
-
-namespace NetCoreDemoWeb.Models
+namespace Module05.Models
 {
     public class ErrorViewModel
     {
