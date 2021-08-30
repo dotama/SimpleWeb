@@ -1,4 +1,4 @@
-namespace Module05.Models
+namespace SimpleWeb.Models
 {
     public class ErrorViewModel
     {

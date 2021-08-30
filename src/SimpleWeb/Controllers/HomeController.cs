@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using Module05.Models;
+using SimpleWeb.Models;
 
-namespace Module05.Controllers
+namespace SimpleWeb.Controllers
 {
     public class HomeController : Controller
     {
