@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -7,7 +6,7 @@ using Moq;
 using SimpleWeb.Controllers;
 using SimpleWeb.Models;
 
-namespace SimpleWeb.IntegrationTest
+namespace SimpleWeb.UnitTest
 {
     [TestClass]
     public class HomeControllerTests

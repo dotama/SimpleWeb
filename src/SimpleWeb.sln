@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleWeb", "SimpleWeb\SimpleWeb.csproj", "{33817459-1B70-4735-9922-18FCA456CC4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleWeb.IntegrationTest", "SimpleWeb.IntegrationTest\SimpleWeb.IntegrationTest.csproj", "{AFFF1579-D71D-49B4-AA39-81F57C62C256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleWeb.UnitTest", "SimpleWeb.UnitTest\SimpleWeb.UnitTest.csproj", "{3182235B-5CBC-478C-961A-762449786347}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{33817459-1B70-4735-9922-18FCA456CC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33817459-1B70-4735-9922-18FCA456CC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33817459-1B70-4735-9922-18FCA456CC4D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFFF1579-D71D-49B4-AA39-81F57C62C256}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFFF1579-D71D-49B4-AA39-81F57C62C256}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFFF1579-D71D-49B4-AA39-81F57C62C256}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFFF1579-D71D-49B4-AA39-81F57C62C256}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3182235B-5CBC-478C-961A-762449786347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3182235B-5CBC-478C-961A-762449786347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3182235B-5CBC-478C-961A-762449786347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3182235B-5CBC-478C-961A-762449786347}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

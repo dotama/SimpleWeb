@@ -1,4 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SimpleWeb.Models;
@@ -16,6 +18,15 @@ namespace SimpleWeb.Controllers
 
         public IActionResult Index()
         {
+            string userName;
+            string identifier = "X-MS-CLIENT-PRINCIPAL-NAME";
+            IEnumerable<string> headerValues = HttpContext.Request.Headers[identifier];
+            if (!headerValues.Any())
+                userName = "Not login yet";
+            else
+                userName = headerValues.FirstOrDefault();
+
+            ViewBag.userName = userName;
             return View();
         }
 
