@@ -19,7 +19,6 @@ namespace SimpleWeb.UnitTest
             var controller = new HomeController(null);
             controller.ControllerContext = new ControllerContext();
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
-            //controller.ControllerContext.HttpContext.Request.Headers["device-id"] = "20317";
 
             // Act
             var result = controller.Index();
