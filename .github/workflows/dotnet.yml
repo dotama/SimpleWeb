@@ -14,7 +14,7 @@ jobs:
         with:
           dotnet-version: 5.0.x
       - name: Resotre
-        run: dotnet restore
+        run: dotnet restore src/*.sln
       - name: Build
         run: dotnet build --configuration Release --no-restore
       - name: Test
