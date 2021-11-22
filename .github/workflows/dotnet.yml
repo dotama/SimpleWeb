@@ -16,6 +16,6 @@ jobs:
       - name: Resotre
         run: dotnet restore src/*.sln
       - name: Build
-        run: dotnet build --configuration Release --no-restore
+        run: dotnet build src/*.sln --configuration Release --no-restore
       - name: Test
-        run: dotnet test --no-restore --verbosity normal
+        run: dotnet test src/*.sln --no-restore --verbosity normal
