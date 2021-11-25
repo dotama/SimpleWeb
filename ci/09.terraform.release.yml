@@ -20,18 +20,18 @@ stages:
             displayName: "Terraform : init"
             inputs:
               workingDirectory: $(System.DefaultWorkingDirectory)/_SimpleWeb.Publish/drop/tf
-              backendServiceArm: 3961e490-4067-4e0e-974f-640b2b24997d
+              backendServiceArm: xxxxxxxx-4067-4e0e-974f-640b2b24997d
               backendAzureRmResourceGroupName: Demo1123
               backendAzureRmStorageAccountName: demotf1125
               backendAzureRmContainerName: terraform
-              backendAzureRmKey: mUYmEeNqgRHqV4yeAeDGWND8C/9TqmfCF1UIqJzs6GfpgZ5LlU67WfpJ6Wl+wLo7HQ4p728KnHcxH/OuDX4hGA==
+              backendAzureRmKey: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx==
           - task: ms-devlabs.custom-terraform-tasks.custom-terraform-release-task.TerraformTaskV2@2
             displayName: "Terraform : azurerm"
             inputs:
               command: apply
               workingDirectory: $(System.DefaultWorkingDirectory)/_SimpleWeb.Publish/drop/tf
               commandOptions: --auto-approve
-              environmentServiceNameAzureRM: 3961e490-4067-4e0e-974f-640b2b24997d
+              environmentServiceNameAzureRM: xxxxxxxx-4067-4e0e-974f-640b2b24997d
   - stage: Deploy
     displayName: SimpleWeb.Infra
     jobs:
@@ -41,6 +41,6 @@ stages:
           - task: AzureWebApp@1
             displayName: "Azure Web App Deploy: web$(random)"
             inputs:
-              azureSubscription: 3961e490-4067-4e0e-974f-640b2b24997d
+              azureSubscription: xxxxxxxx-4067-4e0e-974f-640b2b24997d
               appType: webAppLinux
               appName: web$(random)
