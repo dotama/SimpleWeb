@@ -1,7 +1,9 @@
+using System;
 using System.IO;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Ci.Extension;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -10,15 +12,22 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
+using SimpleWeb.Models;
+using TwentyTwenty.Storage;
+using TwentyTwenty.Storage.Azure;
+using TwentyTwenty.Storage.Local;
 
 namespace SimpleWeb
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment webHostEnvironment)
         {
             Configuration = configuration;
+            WebHostEnvironment = webHostEnvironment;
         }
+
+        public IWebHostEnvironment WebHostEnvironment { get; }
 
         public IConfiguration Configuration { get; }
 
@@ -28,6 +37,22 @@ namespace SimpleWeb
             services.AddControllersWithViews();
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
             services.AddHealthChecks();
+
+            var storageType = Configuration.GetValue<StorageType>("Storage:Type");
+            switch (storageType)
+            {
+                case StorageType.Azure:
+                    var azureConnStr = Configuration.GetValue<string>("Storage:Azure:ConnectionString");
+                    if (azureConnStr.IsNullOrWhiteSpace())
+                        throw new ArgumentNullException(nameof(azureConnStr));
+                    services.AddSingleton<IStorageProvider, AzureStorageProvider>(provider =>
+                        new AzureStorageProvider(new AzureProviderOptions() { ConnectionString = azureConnStr }));
+                    break;
+                default:
+                    services.AddSingleton<IStorageProvider, LocalStorageProvider>(provider =>
+                        new LocalStorageProvider(Path.Combine(WebHostEnvironment.WebRootPath, "")));
+                    break;
+            }
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

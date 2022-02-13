@@ -1,0 +1,31 @@
+﻿@using System.Net
+@using Microsoft.Extensions.Configuration
+@using SimpleWeb.Models
+@inject IConfiguration _configuration
+@{
+    ViewData["Title"] = "Home Page";
+    StorageType storageType = _configuration.GetValue<StorageType>("StorageType");
+}
+
+<div class="card">
+    <div class="card-header">
+        Upload
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Current Image</h5>
+        @if (storageType == StorageType.Azure)
+        {
+            <img src="@Url.Content("~/uploads/images/imageFile.png")" class="rounded mx-auto d-block" alt="" style="max-width: 500px;"/>
+        }
+        else
+        {
+            <img src="@Url.Content("~/uploads/images/imageFile.png")" class="rounded mx-auto d-block" alt="" style="max-width: 500px;"/>
+        }
+    
+        <h5 class="card-title">Upload Image</h5>
+        <form>
+            <input type="file" name="imgFile" class="form-control-file" value="" />
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
