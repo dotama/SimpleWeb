@@ -33,6 +33,21 @@ steps:
     projects: '**/*[Tt]est/*.csproj'
     arguments: '--configuration $(BuildConfiguration) --no-restore'
 
-- task: WhiteSource Bolt@20
+# Whitesource Bolt have license issue, switch to OWASP dependency-check
+#- task: WhiteSource Bolt@20
+#  inputs:
+#    cwd: '$(System.DefaultWorkingDirectory)'
+
+# OWASP dependency-check
+- task: dependency-check-build-task@6
+  displayName: 'Dependency Check'
   inputs:
-    cwd: '$(System.DefaultWorkingDirectory)'
+    projectName: 'Ci.Result'
+    scanPath: '**/*.csproj'
+    format: 'HTML, CSV, JSON'
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: 'JUnit'
+    testResultsFiles: 'dependency-check/*junit.xml'
+    searchFolder: '$(Common.TestResultsDirectory)'
