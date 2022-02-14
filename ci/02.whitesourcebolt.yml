@@ -44,8 +44,9 @@ steps:
   inputs:
     projectName: 'Ci.Result'
     scanPath: '**/*.csproj'
-    format: 'HTML, CSV, JSON'
+    format: 'HTML, CSV, JSON, JUNIT'
 
+# Publish OWASP dependency-check report
 - task: PublishTestResults@2
   inputs:
     testResultsFormat: 'JUnit'
