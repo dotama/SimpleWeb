@@ -4,7 +4,7 @@ trigger:
 name: Deploy Bicep files
 
 variables:
-  resourceGroupName: 'demo555rg'
+  resourceGroupName: 'DemoRgName'
   location: 'eastasia'
   templateFile: './main.bicep'
 
