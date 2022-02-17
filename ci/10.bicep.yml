@@ -20,4 +20,4 @@ steps:
     inlineScript: |
       az --version
       az group create --name $(resourceGroupName) --location $(location)
-      az deployment group create --resource-group $(resourceGroupName) --template-file $(System.DefaultWorkingDirectory)/bicep/main.bicep
+      az deployment group create --resource-group $(resourceGroupName) --template-file $(System.DefaultWorkingDirectory)/bicep/main.bicep --parameters $(System.DefaultWorkingDirectory)/bicep/paramters.json
