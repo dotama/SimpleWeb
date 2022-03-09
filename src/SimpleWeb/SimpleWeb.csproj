@@ -4,6 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <ApplicationInsightsResourceId>/subscriptions/11321b33-1608-46d8-8a51-5d32cdd1b38a/resourceGroups/SimpleWeb/providers/microsoft.insights/components/SimpleWeb</ApplicationInsightsResourceId>
+    <UserSecretsId>567a9a65-c406-4619-b722-3f09dfca0861</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
