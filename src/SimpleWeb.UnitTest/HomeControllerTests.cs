@@ -15,8 +15,7 @@ namespace SimpleWeb.UnitTest
         public void IndexShouldBeViewResult()
         {
             // Arrange
-            
-            var controller = new HomeController(null,null,null);
+            var controller = new HomeController(null,null,null, null);
             controller.ControllerContext = new ControllerContext();
             controller.ControllerContext.HttpContext = new DefaultHttpContext();
 
@@ -31,7 +30,7 @@ namespace SimpleWeb.UnitTest
         public void PrivacyShouldBeViewResult()
         {
             // Arrange
-            var controller = new HomeController(null,null,null);
+            var controller = new HomeController(null,null,null, null);
 
             // Act
             var result = controller.Privacy();
@@ -46,7 +45,7 @@ namespace SimpleWeb.UnitTest
             // Arrange
             var mockHttpContext = new Mock<HttpContext>();
             mockHttpContext.Setup(x => x.TraceIdentifier).Returns("TraceId");
-            var controller = new HomeController(null,null,null);
+            var controller = new HomeController(null,null,null,null);
             controller.ControllerContext = new ControllerContext();
             controller.ControllerContext.HttpContext = mockHttpContext.Object;
 
