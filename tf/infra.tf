@@ -17,7 +17,7 @@ provider "azurerm" {
 
 locals {
   group_name  = "DemoTf-${formatdate("MMDDHHmm", timestamp())}"
-  location    = "southeastasia"
+  location    = "eastasia"
   random_name = "__random__"
   # random_name             = random_string.rid.result
 }
