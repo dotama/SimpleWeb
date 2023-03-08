@@ -40,7 +40,6 @@ steps:
     targetFile: 'src/SimpleWeb.sln'
     monitorWhen: 'always'
     failOnIssues: false
-    projectName: 'SimpleWeb'
     organization: 'lettucebo'
 
 # Whitesource Bolt have license issue, switch to OWASP dependency-check
