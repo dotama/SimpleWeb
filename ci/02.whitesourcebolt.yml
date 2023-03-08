@@ -37,6 +37,7 @@ steps:
   inputs:
     serviceConnectionEndpoint: 'Snyk Conn'
     testType: 'app'
+    targetFile: '**/*.csproj'
     monitorWhen: 'always'
     failOnIssues: false
     projectName: 'SimpleWeb'
