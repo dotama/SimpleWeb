@@ -12,6 +12,7 @@ namespace SimpleWeb.UITest
         // to install Microsoft Edge WebDriver.
 
         private EdgeDriver _driver;
+        private readonly string _appUrl = "https://www.bing.com/";
 
         [TestInitialize]
         public void EdgeDriverInitialize()
@@ -28,8 +29,11 @@ namespace SimpleWeb.UITest
         public void VerifyPageTitle()
         {
             // Replace with your own test logic
-            _driver.Url = "https://www.bing.com";
-            Assert.AreEqual("Bing", _driver.Title);
+            _driver.Navigate().GoToUrl(_appUrl + "/");
+            _driver.FindElement(By.Id("sb_form_q")).SendKeys("Azure Pipelines");
+            _driver.FindElement(By.Id("sb_form_q")).Submit();
+            Assert.IsTrue(_driver.Title.Contains("Azure Pipelines"), "Verified title of the page");
+
         }
 
         [TestCleanup]
