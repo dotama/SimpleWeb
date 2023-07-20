@@ -61,7 +61,7 @@ resource "azurerm_app_service" "demotf" {
   app_service_plan_id = azurerm_app_service_plan.demotf.id
 
   site_config {
-    linux_fx_version = "DOTNETCORE|3.1"
+    linux_fx_version = "DOTNETCORE|6.0"
   }
 
   app_settings = {
