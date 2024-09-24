@@ -2,6 +2,15 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+      "defaultName": {
+        "value": "demo0217"
+      },
+      "location": {
+        "value": "eastasia"
+      },
+      "osVersion": {
+        "value": "2019-Datacenter"
+      },
         "password": {
             "value": "P@ssw0rdP@ssw0rd"
         }
