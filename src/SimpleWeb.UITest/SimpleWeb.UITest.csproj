@@ -9,6 +9,6 @@
         <PackageReference Include="MSTest.TestFramework" Version="3.6.0" />
         <PackageReference Include="Selenium.WebDriver" Version="4.25.0" />
         <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="129.0.6668.5800" />
-        <PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="128.0.2739.80" />
+        <!--<PackageReference Include="Selenium.WebDriver.MSEdgeDriver" Version="128.0.2739.80" />-->
     </ItemGroup>
 </Project>
