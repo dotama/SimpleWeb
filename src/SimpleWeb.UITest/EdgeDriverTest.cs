@@ -22,6 +22,7 @@ namespace SimpleWeb.UITest
             {
                 PageLoadStrategy = PageLoadStrategy.Normal
             };
+            options.AddArgument("headless"); // 添加无头模式
             _driver = new EdgeDriver(options);
         }
 
