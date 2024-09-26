@@ -12,6 +12,12 @@ pool:
   - agent.name -equals 'tango4cn.dev.WIN-N6ECP8H4FF5'
 
 steps:
+  # Debugging: 输出Agent信息
+  - script: |
+      Write-Host "Agent Name: $(Agent.Name)"
+      Write-Host "Agent Pool: $(Agent.JobName)"
+      displayName: 'Debug Agent Information
+
   # Checkout the code from the repository
   - task: Checkout@1
     displayName: 'Checkout code from repository'
