@@ -7,9 +7,9 @@ trigger:
 - master
 
 pool:
-  name: 'localVm1'
-  #demands:
-  #- agent.name -equals 'Hosted Agent'
+  name: 'Default'
+  demands:
+  - agent.name -equals 'local_win2022'
 
 steps:
   # Debugging: 输出Agent信息
