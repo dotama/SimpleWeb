@@ -9,7 +9,7 @@ trigger:
 pool:
   name: 'Azure Pipelines'
   demands:
-  - agent.name -equals 'tango4cn.dev.WIN-N6ECP8H4FF5'
+  - agent.name -equals 'Hosted Agent'
 
 steps:
   # Debugging: 输出Agent信息
