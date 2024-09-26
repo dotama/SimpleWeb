@@ -43,13 +43,13 @@ steps:
       script: |
         # 假设你已经在Windows Server上配置了IIS，并且创建了一个站点
         # Step 1: 停止现有的网站（如果已运行）
-        Stop-WebSite -Name "YourSiteName"
+        Stop-WebSite -Name "SimpleWeb"
 
         # Step 2: 将编译后的文件复制到IIS网站目录
-        Copy-Item -Path "$(Build.ArtifactStagingDirectory)\*" -Destination "C:\inetpub\wwwroot\YourSiteName" -Recurse -Force
+        Copy-Item -Path "$(Build.ArtifactStagingDirectory)\*" -Destination "C:\inetpub\wwwroot\SimpleWeb" -Recurse -Force
 
         # Step 3: 启动网站
-        Start-WebSite -Name "YourSiteName"
+        Start-WebSite -Name "SimpleWeb"
 
         # Step 4: 输出成功信息
         Write-Host "Deployment to IIS completed successfully."
