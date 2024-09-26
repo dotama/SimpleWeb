@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  name: 'Azure Pipelines'
+  name: 'localVm1'
   #demands:
   #- agent.name -equals 'Hosted Agent'
 
