@@ -8,8 +8,8 @@ trigger:
 
 pool:
   name: 'Azure Pipelines'
-  demands:
-  - agent.name -equals 'Hosted Agent'
+  #demands:
+  #- agent.name -equals 'Hosted Agent'
 
 steps:
   # Debugging: 输出Agent信息
