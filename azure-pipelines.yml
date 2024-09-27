@@ -7,63 +7,28 @@ trigger:
 - master
 
 pool:
-  name: 'Default'
-  demands:
-  - agent.name -equals 'local_win2022'
+  name: "Default"
+
+variables:
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
 
 steps:
-  # Debugging: 输出Agent信息
-  - script: |
-      Write-Host "Agent Name: $(Agent.Name)"
-      Write-Host "Agent Pool: $(Agent.JobName)"
-      displayName: 'Debug Agent Information
+- task: NuGetToolInstaller@1
 
-  # Checkout the code from the repository
-  - task: Checkout@1
-    displayName: 'Checkout code from repository'
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
 
-  # Setup .NET Core SDK 8.0
-  - task: UseDotNet@2
-    displayName: 'Setup .NET Core SDK 8.0'
-    inputs:
-      packageType: 'sdk'
-      version: '8.0.x'
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
 
-  # Restore .NET dependencies
-  - script: dotnet restore src/*.sln
-    displayName: 'Restore .NET dependencies'
-
-  # Build the solution
-  - script: dotnet build src/*.sln --configuration Release --no-restore
-    displayName: 'Build .NET solution'
-
-  # Run tests
-  - script: dotnet test src/*.sln --no-restore --verbosity normal
-    displayName: 'Run unit tests'
-
-  # Deploy to IIS on the local Windows Server
-  - task: PowerShell@2
-    displayName: 'Deploy to IIS'
-    inputs:
-      targetType: 'inline'
-      script: |
-        # 假设你已经在Windows Server上配置了IIS，并且创建了一个站点
-        # Step 1: 停止现有的网站（如果已运行）
-        Stop-WebSite -Name "SimpleWeb"
-
-        # Step 2: 将编译后的文件复制到IIS网站目录
-        Copy-Item -Path "$(Build.ArtifactStagingDirectory)\*" -Destination "C:\inetpub\wwwroot\SimpleWeb" -Recurse -Force
-
-        # Step 3: 启动网站
-        Start-WebSite -Name "SimpleWeb"
-
-        # Step 4: 输出成功信息
-        Write-Host "Deployment to IIS completed successfully."
-  
-  # (Optional) Restart IIS to ensure everything is loaded properly
-  - task: PowerShell@2
-    displayName: 'Restart IIS'
-    inputs:
-      targetType: 'inline'
-      script: |
-        iisreset
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
